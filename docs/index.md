@@ -108,9 +108,13 @@ The function returns a `PointCloud` of `Normal`s, which stores information about
 ### 3) Estimating $p$ Value for BPA
 
 To estimate the value of $p$, the radius of the ball that will be used in BPA, we want to find a reasonable value of $p$ such that 1. the ball can rest on trios of points without falling through the surface, 2. the ball can pivot over an edge with a high likelyhood of being able to reach another point. To satisfy these requirements, we essentially calculate a value of $p$ that is the average distance of each point to some set number of its neighbors. 
+
+
 $$
 p = \frac{1}{|PC|} \sum_{i = 1}^{|PC|} (\frac{1}{k} \sum_{j = 1}^{k}\text{distance}(p_i, \text{neighbor}(p_i, j)))
 $$
+
+
 A KDTree is used to efficiently look up the $k$ nearest points to $p_i$. The average Euclidian distance between the point $p_i$ and its neighbors is calculated for each point in the point cloud $PC$. Then the average of these distances is found to become the value $p$. 
 
 The number of nearby points considered was somewhat empirically chosen. We found that considering the nearest 16 points worked well for small and medium size meshes. For large meshes, the larger of 16 and 0.01% of the number of points was chosen for a value of $p$, in case the mesh was significantly dense.
@@ -297,23 +301,19 @@ Unfotunately, for large meshes the visualizer gets too slow as the visualizer ha
 
 ## References
 
+[1] [The Ball-Pivoting Algorithm for Surface Reconstruction](https://lidarwidgets.com/samples/bpa_tvcg.pdf): Fausto Bernardini, Joshua Mittleman, Holly Rushmeier, Cla ́udio Silva, Gabriel Taubin
 
+[2] [An Analysis and Implementation of a Parallel Ball Pivoting Algorithm](https://pdfs.semanticscholar.org/8ec0/d70299f83ccb98ad593a1b581deb018cbfe2.pdf): Julie Digne
 
 ## Contributions
 
-**Project Proposal:** John Rush, Martin Xia, Griffin Prechter
-
-**Milestone (Normal Estimation):** Griffin Prechter, John Rush
-
-**BPA Implementation & Visualization:** Griffin Prechter, Martin Xia
-
-**Presentaiton & Demo:** Griffin Prechter, John Rush
-
-**Final Report:** Griffin Prechter, John Rush
-
-**Final Video:** Griffin Prechter
-
 #### By Member
+
+**Griffin Prechter:** Worked on Project Proposal, Milestone Report, Demo, Final Report, Final Video. Implemented BPA and Visualization Code and data-structures. Implemented triangle seeding, ball pivoting, p estimation, normal estimation, voxel grid, and triangle visualization.
+
+**John Rush**: Worked on Project Proposal, Final Report and Demo. Implemented and desgined normal estimation and integrated PCL.
+
+**Martin Xia:** Worked on Project Proposal and Milestone Report. Worked heavily on BPA Implementation aspects like seeding and pivoting, figuring out how pcl works. Provided ideas on the code and debugging.
 
 ## Appendix
 

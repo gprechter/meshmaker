@@ -7,7 +7,7 @@
         <figcaption align="middle">bunny.ply using our BPA</figcaption>
 </div>
 
-## [Video Demonstation](https://youtu.be/YDZcvOCD40g)
+## [Final Project Video](https://youtu.be/YDZcvOCD40g)
 
 ## Abstract
 

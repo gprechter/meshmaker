@@ -37,7 +37,7 @@ public:
   bool used;
   pcl::PointXYZ pos;
   pcl::Normal normal;
-  
+
   pcl::PointXYZ *voxelPos() {
     return new pcl::PointXYZ((pos.x - min_point_AABB.x) / get_delta(), (pos.y - min_point_AABB.y) / get_delta(), (pos.z - min_point_AABB.z) / get_delta());
   }
@@ -150,7 +150,6 @@ public:
   std::vector<Edge*> *front;
   bool onFront(Vertex *x);
   void join(Edge *e, Vertex *x, pcl::PointXYZ *cent);
-  void glue(Edge *e);
 };
 
 static Front *front;
@@ -303,7 +302,7 @@ Triangle *seed_triangle(std::vector<Vertex*> *vertices, VoxelGrid *vg, pcl::visu
                 return tri;
               }
             }
-          
+
         }
       }
     }
@@ -442,7 +441,7 @@ double find_distance_to_nearest(pcl::PointXYZ p, pcl::KdTreeFLANN<pcl::PointXYZ>
   K = std::max(K, 16);
   std::vector<int> pointIdxNKNSearch(K);
   std::vector<float> pointNKNSquaredDistance(K);
-  
+
   if ( kdtree->nearestKSearch (p, K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 )
   {
     for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
@@ -479,12 +478,12 @@ int main(int argc, char* argv[])
   }
   double p_choose = 0.0;
   pcl::KdTreeFLANN<pcl::PointXYZ> *kdtree = new pcl::KdTreeFLANN<pcl::PointXYZ>();
-  
+
   kdtree->setInputCloud (cloud);
-  
+
   int K = 10;
   int i =0;
-  double scale = 0.015;
+  double scale = 0.005;
   std::vector<int> pointIdxNKNSearch(K);
   std::vector<float> pointNKNSquaredDistance(K);
   for (pcl::PointXYZ p : *cloud) {
@@ -581,9 +580,9 @@ int main(int argc, char* argv[])
     tri->points[1]->used = true;
     tri->points[2]->used = true;
     triangles->push_back(tri);
-    
+
     std::cout << "ADDED SEED TRIANGLE: " << tri->points[0]->to_string() << tri->points[1]->to_string()  << tri->points[2]->to_string() << "\n";
-    //tri->drawTriangle(viewer);
+    tri->drawTriangle(viewer);
     Edge *e1 = new Edge(tri->points[0], tri->points[1], tri->points[2], *seed_cent);
     front->front->push_back(e1);
     e1->v_i->edges->push_back(e1->v_j);
@@ -600,11 +599,12 @@ int main(int argc, char* argv[])
   }
   }
   std::cout << "MESH COMPLETED WITH " << triangles->size() << " TRIANGLES\n";
+
   for (Triangle *t : *triangles) {
     t->drawTriangle(viewer);
   }
   while (!viewer->wasStopped ()) {
-    
+
     viewer->spinOnce (1);
   }
 

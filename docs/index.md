@@ -7,7 +7,7 @@
         <figcaption align="middle">bunny.ply using our BPA</figcaption>
 </div>
 
-## [Video Demonstation]()
+## [Video Demonstation](https://youtu.be/YDZcvOCD40g)
 
 ## Abstract
 
@@ -317,7 +317,7 @@ Unfotunately, for large meshes the visualizer gets too slow as the visualizer ha
 
 **John Rush**: Worked on Project Proposal, Final Report and Demo. Implemented and desgined normal estimation and integrated PCL.
 
-**Martin Xia:** Worked on Project Proposal and Milestone Report. Worked heavily on BPA Implementation aspects like seeding and pivoting, figuring out how pcl works. Provided ideas on the code and debugging.
+**Yunchen Xia:** Worked on Project Proposal and Milestone Report. Worked heavily on BPA Implementation aspects like seeding and pivoting, figuring out how pcl works. Provided ideas on the code and debugging.
 
 ## Appendix
 

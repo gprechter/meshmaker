@@ -1,9 +1,13 @@
 #  Final Project - Mesh Maker
 
+### Griffin Prechter, John Rush, Yunchen Xia
+
 <div align="middle">
         <img src="images/bunny_f.png" align="middle" width="500px"/>
         <figcaption align="middle">bunny.ply using our BPA</figcaption>
 </div>
+
+## [Video Demonstation]()
 
 ## Abstract
 
@@ -263,7 +267,7 @@ One of the most important lessons we learned was the importance of good design. 
 
 ## Results
 
-We believed that being able to visualize the algorithm was an important aspect of our project. You can see a video containing visualizations here. Below are two animated images of the construction of simple meshes using BPA, notice how the mesh expands from a seeded triangle. 
+We believed that being able to visualize the algorithm was an important aspect of our project. Below are two animated images of the construction of simple meshes using BPA, notice how the mesh expands from a seeded triangle. 
 
 <div align="middle">
         <img src="images/sphere.gif" align="middle" width="500px"/>
